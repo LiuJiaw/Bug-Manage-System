@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'UserList.jsp' starting page</title>
+    <title>My JSP 'queryUser.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,28 +20,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<script type="text/javascript">
-	function addUser(){
-		location.href="<%=request.getContextPath() %>/jsp/addUser.jsp";
-	}
-	
-	function queryUser(){
-		location.href="<%=request.getContextPath() %>/jsp/queryUser.jsp";
-	}
-</script>
-<script>
-    function del(id){
-    
-    document.forms[0].action="<%=request.getContextPath()%>/user/deletUser.action?user_id="+id;
-    document.forms[0].submit();
-    }
- </script>
+
   </head>
   
   <body>
-  <form action="<%=request.getContextPath() %>/user/deletUser.action" method="post">
-  	<input type="button" value="新建用户" onclick="addUser()"><input type="button" value="搜索用户" onclick="queryUser()">
-  	<input type="button" value="返回">
+  <form action="<%=request.getContextPath() %>/user/ queryUserByItems.action" method="post">
+  	 用户名：<input type="text" name="userName"/><br/>
+  	 真实姓名：<input type="text" name="realName"/><input type="submit" value="搜索"><br/>
   	<table border="1" width="100%">
   		<tr>
   			<td>用户名</td>
@@ -59,10 +44,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			<td>${us.pwd}</td>
   			<td>${us.user_role.role_name}</td>
   			<td>${us.email}</td>
-  			<td><a href="javascript:delt(${us.user_id})">修改</a>|<a href="javascript:del(${us.user_id})">删除</a></td>
+  			<td><a href="#">修改</a>|<a href="#">删除</a></td>
   			</tr>
   		</c:forEach>
   	</table>
-    </form>
+    
+  </form>
+   
   </body>
 </html>
