@@ -11,11 +11,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!--property:user类中对象的名字  -->
 		<!--javaType:该对象的类型  -->
 		<association property="user_role" javaType="user_role">
-			<id column="role_id" property="user_id"></id>
+			<id column="role_id" property="role_id"></id>
 		</association>
 	</resultMap>
 	<!-- 检索全部用户信息 -->
 	<select id="queryAllUsers"  resultMap="userMap">
 		select b.*,u.role_name from bug_user b,user_role u where b.role_id=u.role_id
 	</select>
+	<!-- 添加用户 -->
+	<insert id="addUser" parameterType="user">
+		insert into bug_user values(user_index.nextval,#{userName},#{pwd},#{realName},#{email},#{user_role.role_id})
+	</insert>
+	<!-- 按条件搜索用户 -->
+	<select id="queryUserByItems" parameterType="user" resultMap="userMap">
+		select b.*,u.role_name from bug_user b,user_role u  
+		<where>
+			b.role_id=u.role_id
+			<if test="userName!=null or userName!=''">
+				and username like '%${userName}%' 
+			</if>
+			<if test="realName!=null or realName!=''">
+				and realname like '%${realName}%' 
+			</if>
+		</where>
+	</select>
+	
+	<!-- 删除用户 -->
+	<delete id="deletUser" parameterType="user">
+		delete from bug_user where user_id=#{user_id}
+	</delete>
 </mapper>
