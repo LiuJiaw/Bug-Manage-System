@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.SSM.mapper.ProjectMapper">
+	<resultMap type="project" id="projectMap">
+		<!-- 主键映射 -->
+		<id column="pro_id" property="pro_id"></id>
+		<!--property:user类中对象的名字  -->
+		<!--javaType:该对象的类型  -->
+		<association property="pro_bugs" javaType="pro_bugs">
+			<id column="bug_id" property="bug_id"></id>
+		</association>
+		
+	</resultMap>
+	<resultMap type="pro_bugs" id="bugMap">
+		<!-- 主键映射 -->
+		<id column="bug_id" property="bug_id"></id>
+		<!--property:user类中对象的名字  -->
+		<!--javaType:该对象的类型  -->
+			
+	</resultMap>
+	
+	<!-- 检索全部用户信息 -->
+	<select id="queryAllProjects"  resultMap="projectMap">
+		select * from project
+	</select>
+	<select id = "queryAllPro_bugs" resultMap = "bugMap" parameterType="int">
+		select * from pro_bug where bug_id = #{value}
+	</select>
+	<select id = "queryAllPro_bugs1" resultMap = "bugMap">
+		select * from pro_bug 
+	</select>
+	<!-- 添加用户 -->
+	<insert id="addProject" parameterType="project">
+		insert into project values(pro_index.nextval,#{pro_bugs.bug_id},#{pro_name},#{pro_key},#{message},sysdate,#{user_name})
+		<!-- insert into bug_user (username,pwd,realname,email,role_id) values(user_index.nextval,#{userName},#{pwd},#{realName},#{email},#{user_role.role_id}) -->
+	</insert>
+	<insert id="addBug" parameterType="Pro_bugs">
+		insert into pro_bug values(#{bug_id},#{bug_name},#{bug_message},#{bug_dev},#{bug_user},sysdate,null)
+	</insert>
+	<!-- 删除用户 -->
+	<delete id="deletProject" parameterType="project">
+		delete from project where pro_id = #{pro_id}
+	</delete>
+	
+</mapper>
