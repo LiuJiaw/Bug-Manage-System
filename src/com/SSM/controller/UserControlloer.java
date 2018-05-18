@@ -44,12 +44,11 @@ public class UserControlloer {
 		model.addAttribute("Users", users);
 		return "queryUser";
 	}
-	
-	//É¾³ý²Ù×÷
-	@RequestMapping("deletUser") 
-	String deletUser(User user){
-		System.out.println("id:"+user.getUser_id());
+	@RequestMapping("deletUser")
+	public String deletUser(User user){
+		//System.out.println("id:" + user.getUser_id());
 		userService.deletUser(user);
-		return "success";
+		return "sucess";
 	}
+
 }
