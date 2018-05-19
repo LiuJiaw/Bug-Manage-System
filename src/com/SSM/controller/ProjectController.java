@@ -27,7 +27,6 @@ public class ProjectController {
 		
 		//把检索结果集，存放到model中，可以由页面进行引用
 		model.addAttribute("Projects", allProjects);
-		System.out.println("size:"+allProjects.size());
 		//返回逻辑视图名
 		return "ProjectList";
 		//return "sucess";		
@@ -36,11 +35,9 @@ public class ProjectController {
 	//跳转到bug
 	@RequestMapping("bug")
 	public String bug(Project project){
-		System.out.println("bug-001");
 		return "Bug";
 	}
 	//添加用户
-	
 	@RequestMapping("addProject")
 	public String addProject(Project project){
 		projectService.addProject(project);
@@ -51,20 +48,8 @@ public class ProjectController {
 		projectService.addBug(proBugs);
 		return "sucess";
 	}
-	
-	/**
-	@RequestMapping("queryUserByItems")
-	public String queryUserByItems(Project project,Model model){
-		List<Project>projects = projectService.queryProjectByItems(project);
-		//把结果集存放到model，由页面调用
-		model.addAttribute("Projects", projects);
-		return "queryProject";
-	}
-	
-	*/
 	@RequestMapping("deletProject")
-	public String deletUser(Project project){
-		System.out.println("del_pro_id:" + project.getPro_id());
+	public String deletProject(Project project){
 		projectService.deletProject(project);
 		return "sucess";
 	}
