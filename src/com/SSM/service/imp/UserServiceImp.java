@@ -18,7 +18,6 @@ public class UserServiceImp implements UserService {
 		// TODO Auto-generated method stub
 		return userMapper.queryAllUsers();
 	}
-
 	public void addUser(User user) {
 		// TODO Auto-generated method stub
 		userMapper.addUser(user);
@@ -28,8 +27,9 @@ public class UserServiceImp implements UserService {
 		// TODO Auto-generated method stub
 		return userMapper.queryUserByItems(user);
 	}
-   
-	public void deletUser(User user){
+
+	public void deletUser(User user) {
+		// TODO Auto-generated method stub
 		userMapper.deletUser(user);
 	}
 }
