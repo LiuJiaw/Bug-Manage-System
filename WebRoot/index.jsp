@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
+    <style>a{ text-decoration: none;}</style>
     <title>My JSP 'index.jsp' starting page</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,7 +21,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <a href="<%=request.getContextPath() %>/user/queryAllUsers.action">用户管理</a>
-    
+  <div style="height:100px;width:300px"></div>
+  <div align="center">
+  <p style="font-size:50px;color:black">bug管理系统</p><br>
+  <p style="font-size:30px;color:white">
+  <a href="<%=request.getContextPath() %>/user/queryAllUsers.action">用户信息列表</a><br><br>
+  <a href="<%=request.getContextPath() %>/project/queryAllProjects.action">项目信息列表</a><br><br>
+  <a href="<%=request.getContextPath() %>/pro_bugs/queryAllPro_bugs1.action">Bug信息列表</a><br><br>
+  </p>
+  </div>
   </body>
 </html>
