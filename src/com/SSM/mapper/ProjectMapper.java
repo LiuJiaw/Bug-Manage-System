@@ -9,20 +9,19 @@ public interface ProjectMapper {
 	//检索全部项目
 	List<Project>queryAllProjects();
 	
-	List<Pro_bugs> queryAllPro_bugs(int id);
+	List<Pro_bugs> queryAllPro_bugs(String name);
 	List<Pro_bugs> queryAllPro_bugs1();
 	//跳转bug
 	void bug(Project project);
+	//删除Bug
+	void deletPro_bugs(Pro_bugs pro_bugs);
 	
 	//添加项目
 	void addProject(Project project);
 	void addBug(Pro_bugs proBugs);
 	//删除项目
 	void deletProject(Project project);
-	/**
-	 //按条件检索项目
-	List<Project> queryProjectByItems(Project project);
-	*/
+	void deletProjectBug(Project project);
 
 }
 
