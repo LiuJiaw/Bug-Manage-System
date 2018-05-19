@@ -9,9 +9,9 @@ public interface UserService {
 	List<User>queryAllUsers();
 	//添加用户
 	void addUser(User user);
-	
+	//删除用户
+	void deletUser(User user);
 	//按条件检索用户
 	List<User>queryUserByItems(User user);
-    //删除操作
-	void deletUser(User user);
+
 }
