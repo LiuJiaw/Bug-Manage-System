@@ -19,11 +19,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<script>
+		function return1(){
+			location.href="<%=request.getContextPath() %>/index.jsp";
+		}
+	</script>
   </head>
   
   <body>
-    <% request.setCharacterEncoding("UTF-8");%>
-    <h1>添加成功！</h1>
+  	<div align="center">
+  	<h2>操作成功！3秒后返回主页...</h2>
+    <meta http-equiv="refresh" content="3; url=<%=request.getContextPath() %>/index.jsp">
   </body>
 </html>

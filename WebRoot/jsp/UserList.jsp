@@ -19,8 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-<script type="text/javascript">
+	-->  
+    
+	<script type="text/javascript">
 	function addUser(){
 		location.href="<%=request.getContextPath() %>/jsp/addUser.jsp";
 	}
@@ -28,41 +29,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function queryUser(){
 		location.href="<%=request.getContextPath() %>/jsp/queryUser.jsp";
 	}
+	function del(id){
+		document.forms[0].action = "<%=request.getContextPath() %>/user/deletUser.action?user_id="+id;
+		document.forms[0].submit();
+	}
+	function return1(){
+		location.href="<%=request.getContextPath() %>/index.jsp";
+	}
 </script>
-<script>
-    function del(id){
-    
-    document.forms[0].action="<%=request.getContextPath()%>/user/deletUser.action?user_id="+id;
-    document.forms[0].submit();
-    }
- </script>
   </head>
   
   <body>
-  <form action="<%=request.getContextPath() %>/user/deletUser.action" method="post">
   	<input type="button" value="新建用户" onclick="addUser()"><input type="button" value="搜索用户" onclick="queryUser()">
-  	<input type="button" value="返回">
+  	<input type="button" value="返回" onclick="return1()">
+  	<form action="<%=request.getContextPath() %>/user/deletUser.action?user_id=" method="post">
   	<table border="1" width="100%">
-  		<tr>
+  		<tr bgcolor="f6c733">
   			<td>用户名</td>
   			<td>真实姓名</td>
   			<td>密码</td>
   			<td>角色</td>
   			<td>邮箱</td>
-  			<td><a href="#">修改</a>|<a href="#">删除</a></td>
   		</tr>
   		<!-- 接收集合数据 -->
   		<c:forEach items="${Users}" var="us">
   			<tr>
   			<td>${us.userName}</td>
   			<td>${us.realName}</td>
-  			<td>${us.pwd}</td>
+  			<td>****</td>
   			<td>${us.user_role.role_name}</td>
   			<td>${us.email}</td>
-  			<td><a href="javascript:delt(${us.user_id})">修改</a>|<a href="javascript:del(${us.user_id})">删除</a></td>
+  			<td class="td3"><a href="javascript:del(${us.user_id})">删除</a></td>
   			</tr>
   		</c:forEach>
   	</table>
-    </form>
+	</form>    
   </body>
 </html>
