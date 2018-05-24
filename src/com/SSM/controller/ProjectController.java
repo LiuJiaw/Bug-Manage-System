@@ -35,7 +35,7 @@ public class ProjectController {
 	//跳转到bug
 	@RequestMapping("bug")
 	public String bug(Project project){
-		return "Bug";
+		return "BugList";
 	}
 	//添加用户
 	@RequestMapping("addProject")

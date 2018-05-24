@@ -20,8 +20,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!-- 添加用户 -->
 	<insert id="addUser" parameterType="user">
-		insert into bug_user values(user_index.nextval,#{userName},#{pwd},#{realName},#{email},#{user_role.role_id})
+		insert into bug_user (username,pwd,realname,email,role_id) values(#{userName},#{pwd},#{realName},#{email},#{user_role.role_id})
+		<!-- insert into bug_user (username,pwd,realname,email,role_id) values(user_index.nextval,#{userName},#{pwd},#{realName},#{email},#{user_role.role_id}) -->
 	</insert>
+	<!-- 删除用户 -->
+	<delete id="deletUser" parameterType="user">
+		delete from bug_user where user_id = #{user_id}
+	</delete>
 	<!-- 按条件搜索用户 -->
 	<select id="queryUserByItems" parameterType="user" resultMap="userMap">
 		select b.*,u.role_name from bug_user b,user_role u  
@@ -35,9 +40,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 	</select>
-	
-	<!-- 删除用户 -->
-	<delete id="deletUser" parameterType="user">
-		delete from bug_user where user_id=#{user_id}
-	</delete>
 </mapper>

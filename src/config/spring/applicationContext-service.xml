@@ -14,4 +14,5 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
 <!-- 商品管理的service -->
 <bean id="userService" class="com.SSM.service.imp.UserServiceImp"/>
+<bean id="projectService" class="com.SSM.service.imp.ProjectServiceImp"/>
 </beans>
